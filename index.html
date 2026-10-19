@@ -154,6 +154,11 @@
             position: absolute; bottom: -20px; border-radius: 1px;
             animation: floatUp linear infinite;
         }
+        .particle-accent {
+            background-color: rgba(var(--accent-rgb), 0.7);
+            box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.8);
+        }
+        .particle-dim { background-color: rgba(255, 255, 255, 0.15); }
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             10% { opacity: 0.8; }
@@ -2915,10 +2920,9 @@
                 particle.style.animationDuration = duration + 's';
                 particle.style.animationDelay = '-' + (Math.random() * duration) + 's';
                 if (Math.random() > 0.4) {
-                    particle.style.backgroundColor = 'rgba(212, 175, 55, 0.7)';
-                    particle.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.8)';
+                    particle.classList.add('particle-accent');
                 } else {
-                    particle.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                    particle.classList.add('particle-dim');
                 }
                 container.appendChild(particle);
             }
