@@ -474,6 +474,246 @@
         .support-buttons .discord-btn { font-size: 1rem; padding: 14px 25px; letter-spacing: 1.5px; }
 
         /* =========================================
+           АККАУНТ
+           ========================================= */
+        .account-chip {
+            position: fixed;
+            top: 22px; left: 28px;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(10, 10, 10, 0.92);
+            border: 2px solid #D4AF37;
+            color: #FFE066;
+            font-family: 'Pixelify Sans', monospace;
+            font-size: 1.2rem; font-weight: 700;
+            cursor: pointer;
+            z-index: 500;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .account-chip:hover {
+            transform: scale(1.08);
+            border-color: #FFE066;
+            box-shadow: 0 0 25px rgba(255, 200, 0, 0.6);
+        }
+        .account-chip.logged-in {
+            background: linear-gradient(135deg, #FFE066, #D4AF37);
+            color: #000;
+        }
+        .account-chip svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .account-wrapper {
+            position: relative;
+            width: 90%; max-width: 430px;
+            max-height: 92vh; overflow-y: auto;
+            background: linear-gradient(135deg, #111 0%, #1a1500 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            box-shadow: 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.3);
+            padding: 35px 30px;
+            text-align: center;
+            z-index: 10;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: auto;
+        }
+        .account-wrapper h2 {
+            font-family: 'Pixelify Sans', monospace;
+            color: #FFE066;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            text-shadow: 0 0 15px rgba(255, 224, 102, 0.5);
+        }
+        .auth-tabs { display: flex; gap: 10px; margin-bottom: 18px; }
+        .auth-tab {
+            flex: 1;
+            background: transparent;
+            border: 2px solid #3E2723;
+            color: #999;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+        .auth-tab.active {
+            border-color: #D4AF37;
+            color: #FFE066;
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        .auth-input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid #3E2723;
+            border-radius: 6px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .auth-input::placeholder { color: #777; }
+        .auth-input:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        .auth-message {
+            min-height: 20px;
+            margin: 10px 0 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #ff8a80;
+            text-align: center;
+        }
+        .auth-message.ok { color: #7CFC9A; }
+        .auth-submit { width: 100%; margin-top: 4px; }
+        .account-avatar {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 14px;
+            background: linear-gradient(135deg, #FFE066, #D4AF37);
+            color: #000;
+            font-family: 'Pixelify Sans', monospace;
+            font-size: 2rem; font-weight: 700;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+        }
+        .account-email { color: #999; font-size: 0.9rem; margin-bottom: 18px; word-break: break-all; }
+        .account-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0 8px; }
+        .account-stat {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 6px;
+            padding: 10px 6px;
+        }
+        .account-stat b {
+            display: block;
+            color: #FFE066;
+            font-family: 'Pixelify Sans', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 2px;
+        }
+        .account-stat span {
+            font-size: 0.62rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================================
+           ЛИДЕРБОРД
+           ========================================= */
+        .leaderboard-wrapper {
+            position: relative;
+            width: 90%; max-width: 480px;
+            max-height: 90vh;
+            display: flex; flex-direction: column;
+            background: linear-gradient(135deg, #111 0%, #1a1500 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            box-shadow: 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.3);
+            padding: 30px 25px;
+            text-align: center;
+            z-index: 10;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: auto;
+        }
+        .leaderboard-wrapper h2 {
+            font-family: 'Pixelify Sans', monospace;
+            color: #FFE066;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 224, 102, 0.5);
+        }
+        .lb-list {
+            display: flex; flex-direction: column; gap: 8px;
+            overflow-y: auto;
+            max-height: 50vh;
+            margin: 12px 0;
+            padding-right: 4px;
+        }
+        .lb-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+        }
+        .lb-row.top1 { border-color: #FFD700; background: rgba(255, 215, 0, 0.1); }
+        .lb-row.top2 { border-color: #C0C0C0; background: rgba(192, 192, 192, 0.08); }
+        .lb-row.top3 { border-color: #CD7F32; background: rgba(205, 127, 50, 0.08); }
+        .lb-rank {
+            width: 30px; flex-shrink: 0;
+            text-align: center;
+            font-family: 'Pixelify Sans', monospace;
+            color: #FFE066;
+            font-size: 1.1rem;
+        }
+        .lb-name {
+            flex: 1;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.95rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .lb-score {
+            font-family: 'Pixelify Sans', monospace;
+            color: #FFE066;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .lb-empty { color: #999; font-size: 0.95rem; padding: 25px 10px; text-align: center; }
+        .lb-mine { color: #bbb; font-size: 0.9rem; margin: 6px 0 0; min-height: 22px; }
+        .lb-login-link {
+            background: none; border: none; padding: 0;
+            color: #FFE066; text-decoration: underline;
+            cursor: pointer; font-family: inherit; font-size: inherit;
+        }
+        .game-btn.lb-open-btn {
+            background: transparent;
+            color: #FFE066;
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            font-size: 0.95rem;
+            padding: 10px 20px;
+        }
+        .game-btn.lb-open-btn:hover { background: #D4AF37; color: #000; }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            left: 50%; bottom: 22px;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(10, 10, 10, 0.96);
+            border: 1px solid #D4AF37;
+            color: #FFE066;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 0 25px rgba(0,0,0,0.8);
+            z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            max-width: 90vw;
+            text-align: center;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+
+        /* =========================================
            СВИТОК ДЛЯ МИНИ-ИГР (ХАБ)
            ========================================= */
         .hub-scroll-wrapper {
@@ -964,6 +1204,9 @@
             .scroll-close-btn { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.2rem; }
             .drop-cap::first-letter { font-size: 2.5rem; }
             .hamburger { top: 15px; right: 15px; }
+            .account-chip { top: 12px; left: 12px; width: 40px; height: 40px; font-size: 1.1rem; }
+            .account-wrapper { padding: 30px 20px; }
+            .leaderboard-wrapper { padding: 25px 15px; }
             .dropdown-menu { top: 60px; right: 15px; width: calc(100% - 30px); max-width: 300px; }
 
             /* Хаб игр на мобильных */
@@ -1003,6 +1246,11 @@
 </head>
 <body>
 
+    <!-- АККАУНТ -->
+    <button class="account-chip" id="accountChip" type="button" onclick="openAccount()" aria-label="Войти в аккаунт" title="Войти">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    </button>
+
     <!-- МЕНЮ-ГАМБУРГЕР -->
     <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Открыть меню" aria-expanded="false" aria-controls="dropdownMenu">
         <span></span><span></span><span></span>
@@ -1010,6 +1258,10 @@
 
     <!-- ВЫПАДАЮЩЕЕ МЕНЮ -->
     <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#" onclick="openAccount(); closeMenu(); return false;">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            Аккаунт
+        </a>
         <a href="#" onclick="openSupport(); closeMenu(); return false;">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
             Поддержка
@@ -1103,7 +1355,7 @@
                 <!-- Карточка 2: Тех. Админ -->
                 <div class="admin-card">
                     <div class="admin-avatar online" style="background: linear-gradient(135deg, #2AABEE, #1E88E5);">Z</div>
-                    <div class="admin-name">Rima</div>
+                    <div class="admin-name">Zaha</div>
                     <div class="admin-role tech">Тех. Админ</div>
                 </div>
             </div>
@@ -1121,10 +1373,52 @@
                     <svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.2,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
                     Discord
                 </a>
-                <a href="https://t.me/m/hEoe3XzLMWMy" target="_blank" rel="noopener" class="telegram-btn">
+                <a href="https://t.me/Kkkrrrtr" target="_blank" rel="noopener" class="telegram-btn">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
                     Telegram
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- АККАУНТ -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="account-wrapper">
+            <button class="game-close-btn" type="button" onclick="closeAccount()" aria-label="Закрыть окно аккаунта">&times;</button>
+
+            <div id="accountLoggedOut">
+                <h2>Аккаунт</h2>
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="tabLogin" type="button" onclick="switchAuthTab('login')">Вход</button>
+                    <button class="auth-tab" id="tabRegister" type="button" onclick="switchAuthTab('register')">Регистрация</button>
+                </div>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <input class="auth-input" type="email" id="loginEmail" placeholder="Email" autocomplete="email" required>
+                    <input class="auth-input" type="password" id="loginPassword" placeholder="Пароль" autocomplete="current-password" required>
+                    <button class="game-btn auth-submit" type="submit">Войти</button>
+                </form>
+
+                <form id="registerForm" style="display: none;" onsubmit="handleRegister(event)">
+                    <input class="auth-input" type="text" id="registerUsername" placeholder="Ник (3–20 символов)" minlength="3" maxlength="20" autocomplete="nickname" required>
+                    <input class="auth-input" type="email" id="registerEmail" placeholder="Email" autocomplete="email" required>
+                    <input class="auth-input" type="password" id="registerPassword" placeholder="Пароль (минимум 6 символов)" minlength="6" autocomplete="new-password" required>
+                    <button class="game-btn auth-submit" type="submit">Создать аккаунт</button>
+                </form>
+
+                <p class="auth-message" id="authMessage" aria-live="polite"></p>
+            </div>
+
+            <div id="accountLoggedIn" style="display: none;">
+                <div class="account-avatar" id="accountAvatar">M</div>
+                <h2 id="accountUsername">Игрок</h2>
+                <p class="account-email" id="accountEmail"></p>
+                <div class="account-stats">
+                    <div class="account-stat"><b id="statSnake">—</b><span>Змейка</span></div>
+                    <div class="account-stat"><b id="statTtt">—</b><span>Крестики</span></div>
+                    <div class="account-stat"><b id="stat2048">—</b><span>2048</span></div>
+                </div>
+                <button class="game-btn auth-submit" type="button" onclick="handleLogout()">Выйти</button>
             </div>
         </div>
     </div>
@@ -1181,6 +1475,7 @@
                 <div class="mobile-btn down" onclick="changeDirection('DOWN')" aria-label="Вниз">↓</div>
                 <div class="mobile-btn right" onclick="changeDirection('RIGHT')" aria-label="Вправо">→</div>
             </div>
+            <button class="game-btn lb-open-btn" type="button" onclick="openLeaderboard('snake')">🏆 Лидеры</button>
             <button class="game-btn back-btn" type="button" onclick="backToHub()">← Назад к играм</button>
         </div>
     </div>
@@ -1192,6 +1487,7 @@
             <div class="ttt-status" id="tttStatus">Ваш ход! (Вы — <span>X</span>)</div>
             <div class="ttt-grid" id="tttGrid" role="group" aria-label="Поле крестики-нолики"></div>
             <button class="game-btn" type="button" onclick="resetTTT()">Начать заново</button>
+            <button class="game-btn lb-open-btn" type="button" onclick="openLeaderboard('ttt')">🏆 Лидеры</button>
             <button class="game-btn back-btn" type="button" onclick="backToHub()">← Назад к играм</button>
         </div>
     </div>
@@ -1211,7 +1507,21 @@
                 </div>
             </div>
             <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">Используйте стрелки или свайпы</p>
+            <button class="game-btn lb-open-btn" type="button" onclick="openLeaderboard('2048')">🏆 Лидеры</button>
             <button class="game-btn back-btn" type="button" onclick="backToHub()">← Назад к играм</button>
+        </div>
+    </div>
+
+    <!-- ЛИДЕРБОРД -->
+    <div class="modal-overlay" id="leaderboardModal">
+        <div class="leaderboard-wrapper">
+            <button class="game-close-btn" type="button" onclick="closeLeaderboard()" aria-label="Закрыть лидерборд">&times;</button>
+            <h2 id="lbTitle">🏆 Лидеры</h2>
+            <div class="lb-list" id="lbList">
+                <div class="lb-empty">Загрузка...</div>
+            </div>
+            <div class="lb-mine" id="lbMine"></div>
+            <button class="game-btn back-btn" type="button" onclick="closeLeaderboard()">Закрыть</button>
         </div>
     </div>
 
@@ -1270,6 +1580,9 @@
         </div>
     </div>
 
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="supabase.js"></script>
     <script>
         // --- МЕНЮ ---
         const hamburger = document.getElementById('hamburger');
@@ -1298,6 +1611,392 @@
             if (dropdownMenu.contains(event.target) || hamburger.contains(event.target)) return;
             closeMenu();
         });
+
+        // --- SUPABASE / АККАУНТ ---
+        const SUPABASE_URL = 'https://mcjvkuxhgitnndeflxrn.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_akzecplUkkSbkOH2iGpyfw_u1LWrTb1';
+
+        let sb = null;
+        try {
+            if (window.supabase && typeof window.supabase.createClient === 'function') {
+                sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+                    auth: { persistSession: true, autoRefreshToken: true }
+                });
+            }
+        } catch (err) {
+            console.warn('Supabase init failed', err);
+        }
+
+        const USER_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>';
+
+        let currentUser = null;
+        let currentProfile = null;
+        let authBusy = false;
+        let scoreSaveErrorShown = false;
+
+        const accountModal = document.getElementById('accountModal');
+        const accountLoggedOut = document.getElementById('accountLoggedOut');
+        const accountLoggedIn = document.getElementById('accountLoggedIn');
+        const accountChip = document.getElementById('accountChip');
+        const authMessage = document.getElementById('authMessage');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const accountAvatar = document.getElementById('accountAvatar');
+        const accountUsername = document.getElementById('accountUsername');
+        const accountEmail = document.getElementById('accountEmail');
+        const leaderboardModal = document.getElementById('leaderboardModal');
+
+        function toast(message) {
+            const el = document.getElementById('toast');
+            if (!el) return;
+            el.textContent = message;
+            el.classList.add('show');
+            clearTimeout(el._timer);
+            el._timer = setTimeout(function() { el.classList.remove('show'); }, 3200);
+        }
+
+        function setAuthMessage(text, ok) {
+            authMessage.textContent = text || '';
+            authMessage.classList.toggle('ok', !!ok && !!text);
+        }
+
+        function setAuthBusy(busy) {
+            authBusy = busy;
+            const loginBtn = loginForm.querySelector('button[type="submit"]');
+            const registerBtn = registerForm.querySelector('button[type="submit"]');
+            if (loginBtn) loginBtn.disabled = busy;
+            if (registerBtn) registerBtn.disabled = busy;
+        }
+
+        function updateAccountChip() {
+            if (currentProfile) {
+                accountChip.textContent = currentProfile.username.charAt(0).toUpperCase();
+                accountChip.classList.add('logged-in');
+                accountChip.title = currentProfile.username;
+                accountChip.setAttribute('aria-label', 'Аккаунт: ' + currentProfile.username);
+            } else {
+                accountChip.innerHTML = USER_ICON;
+                accountChip.classList.remove('logged-in');
+                accountChip.title = 'Войти';
+                accountChip.setAttribute('aria-label', 'Войти в аккаунт');
+            }
+        }
+
+        function renderAccountView() {
+            if (currentProfile) {
+                accountLoggedOut.style.display = 'none';
+                accountLoggedIn.style.display = 'block';
+                accountAvatar.textContent = currentProfile.username.charAt(0).toUpperCase();
+                accountUsername.textContent = currentProfile.username;
+                accountEmail.textContent = currentUser && currentUser.email ? currentUser.email : '';
+                loadAccountStats();
+            } else {
+                accountLoggedOut.style.display = 'block';
+                accountLoggedIn.style.display = 'none';
+            }
+        }
+
+        async function loadAccountStats() {
+            const entries = [['snake', 'statSnake'], ['ttt', 'statTtt'], ['2048', 'stat2048']];
+            for (let i = 0; i < entries.length; i++) {
+                const game = entries[i][0];
+                const el = document.getElementById(entries[i][1]);
+                if (!el) continue;
+                el.textContent = '—';
+                if (!sb || !currentUser) continue;
+                try {
+                    const res = await sb.from('leaderboard').select('best').eq('game', game).eq('user_id', currentUser.id).maybeSingle();
+                    if (!res.error && res.data) el.textContent = res.data.best;
+                } catch (e) { /* ignore */ }
+            }
+        }
+
+        function openAccount() {
+            closeMenu();
+            accountModal.classList.add('active');
+            setAuthMessage('', false);
+            if (currentProfile) renderAccountView();
+            else { renderAccountView(); switchAuthTab('login'); }
+        }
+
+        function closeAccount() { accountModal.classList.remove('active'); }
+
+        function switchAuthTab(tab) {
+            const isLogin = tab === 'login';
+            document.getElementById('tabLogin').classList.toggle('active', isLogin);
+            document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+            loginForm.style.display = isLogin ? 'block' : 'none';
+            registerForm.style.display = isLogin ? 'none' : 'block';
+            setAuthMessage('', false);
+        }
+
+        function authErrorMessage(error) {
+            const raw = (error && error.message) ? error.message : 'Неизвестная ошибка.';
+            const low = raw.toLowerCase();
+            if (low.indexOf('invalid login credentials') !== -1) return 'Неверный email или пароль.';
+            if (low.indexOf('email not confirmed') !== -1) return 'Подтвердите email — проверьте почту.';
+            if (low.indexOf('already registered') !== -1) return 'Этот email уже зарегистрирован.';
+            if (low.indexOf('password should be') !== -1) return 'Пароль слишком короткий (минимум 6 символов).';
+            if (low.indexOf('database error saving new user') !== -1) return 'Не удалось создать профиль. Возможно, ник уже занят.';
+            if (low.indexOf('failed to fetch') !== -1 || low.indexOf('network') !== -1) return 'Нет связи с сервером. Попробуйте ещё раз.';
+            return raw;
+        }
+
+        async function applySession(session) {
+            if (!session || !session.user) return;
+            currentUser = session.user;
+            let username = (currentUser.user_metadata && currentUser.user_metadata.username)
+                ? currentUser.user_metadata.username
+                : (currentUser.email || 'player').split('@')[0];
+            if (sb) {
+                try {
+                    const res = await sb.from('profiles').select('username').eq('id', currentUser.id).maybeSingle();
+                    if (!res.error && res.data && res.data.username) username = res.data.username;
+                } catch (e) { /* ignore */ }
+            }
+            currentProfile = { username: username };
+            updateAccountChip();
+            if (accountModal.classList.contains('active')) renderAccountView();
+            if (leaderboardModal.classList.contains('active') && lbCurrentGame) openLeaderboard(lbCurrentGame);
+        }
+
+        function clearSession() {
+            currentUser = null;
+            currentProfile = null;
+            updateAccountChip();
+            if (accountModal.classList.contains('active')) renderAccountView();
+            if (leaderboardModal.classList.contains('active') && lbCurrentGame) openLeaderboard(lbCurrentGame);
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            if (authBusy) return;
+            if (!sb) { setAuthMessage('Сервис аккаунтов не загрузился. Обновите страницу.', false); return; }
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            if (!email || !password) { setAuthMessage('Введите email и пароль.', false); return; }
+
+            setAuthBusy(true);
+            setAuthMessage('Вход...', true);
+            try {
+                const res = await sb.auth.signInWithPassword({ email: email, password: password });
+                if (res.error) { setAuthMessage(authErrorMessage(res.error), false); return; }
+                await applySession(res.data.session);
+                closeAccount();
+                loginForm.reset();
+                toast('С возвращением, ' + (currentProfile ? currentProfile.username : 'игрок'));
+            } catch (e) {
+                setAuthMessage('Нет связи с сервером. Попробуйте ещё раз.', false);
+            } finally {
+                setAuthBusy(false);
+            }
+        }
+
+        async function handleRegister(event) {
+            event.preventDefault();
+            if (authBusy) return;
+            if (!sb) { setAuthMessage('Сервис аккаунтов не загрузился. Обновите страницу.', false); return; }
+
+            const username = document.getElementById('registerUsername').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const usernameRe = /^[A-Za-zА-Яа-яЁё0-9_]{3,20}$/;
+
+            if (!usernameRe.test(username)) {
+                setAuthMessage('Ник: 3–20 символов, только буквы, цифры и _.', false);
+                return;
+            }
+            if (password.length < 6) {
+                setAuthMessage('Пароль должен быть не короче 6 символов.', false);
+                return;
+            }
+
+            setAuthBusy(true);
+            setAuthMessage('Создаём аккаунт...', true);
+            try {
+                const check = await sb.from('profiles').select('id').ilike('username', username).limit(1);
+                if (check.error) {
+                    setAuthMessage(check.error.code === 'PGRST205'
+                        ? 'База ещё не настроена: выполните SQL из supabase-setup.sql.'
+                        : check.error.message, false);
+                    return;
+                }
+                if (check.data && check.data.length) {
+                    setAuthMessage('Этот ник уже занят — выберите другой.', false);
+                    return;
+                }
+
+                const res = await sb.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: { data: { username: username } }
+                });
+                if (res.error) { setAuthMessage(authErrorMessage(res.error), false); return; }
+
+                if (res.data.session) {
+                    await applySession(res.data.session);
+                    closeAccount();
+                    registerForm.reset();
+                    toast('Аккаунт создан. Добро пожаловать!');
+                } else {
+                    switchAuthTab('login');
+                    document.getElementById('loginEmail').value = email;
+                    setAuthMessage('Аккаунт создан. Подтвердите email и войдите.', true);
+                }
+            } catch (e) {
+                setAuthMessage('Нет связи с сервером. Попробуйте ещё раз.', false);
+            } finally {
+                setAuthBusy(false);
+            }
+        }
+
+        async function handleLogout() {
+            if (sb) {
+                try { await sb.auth.signOut(); } catch (e) { /* ignore */ }
+            }
+            clearSession();
+            closeAccount();
+            toast('Вы вышли из аккаунта.');
+        }
+
+        async function initAuth() {
+            updateAccountChip();
+            if (!sb) return;
+            try {
+                const res = await sb.auth.getSession();
+                if (res.data && res.data.session) await applySession(res.data.session);
+            } catch (e) { /* ignore */ }
+            sb.auth.onAuthStateChange(function(event, session) {
+                if (session) { applySession(session); }
+                else { clearSession(); }
+            });
+        }
+
+        // --- ЛИДЕРБОРД ---
+        const LB_TITLES = { snake: 'Змейка', ttt: 'Крестики-нолики', '2048': '2048' };
+        const LB_UNITS = { snake: 'очков', ttt: 'побед', '2048': 'очков' };
+        let lbPausedSnake = false;
+        let lbCurrentGame = null;
+
+        async function submitScore(game, value) {
+            if (!sb || !currentUser) return;
+            const numeric = Math.floor(Number(value));
+            if (!Number.isFinite(numeric) || numeric <= 0) return;
+            try {
+                const res = await sb.from('scores').insert({
+                    user_id: currentUser.id,
+                    game: game,
+                    score: numeric
+                });
+                if (res.error) {
+                    console.warn('score save failed', res.error);
+                    if (!scoreSaveErrorShown) {
+                        scoreSaveErrorShown = true;
+                        toast(res.error.code === 'PGRST205' ? 'Лидерборд не настроен: выполните SQL.' : 'Не удалось сохранить результат.');
+                    }
+                }
+            } catch (e) {
+                console.warn('score save failed', e);
+            }
+        }
+
+        async function openLeaderboard(game) {
+            lbCurrentGame = game;
+            if (game === 'snake' && isRunning) {
+                lbPausedSnake = true;
+                clearInterval(gameLoop);
+                gameLoop = null;
+                isRunning = false;
+            }
+
+            document.getElementById('leaderboardModal').classList.add('active');
+            document.getElementById('lbTitle').textContent = '🏆 ' + (LB_TITLES[game] || game);
+            const list = document.getElementById('lbList');
+            const mine = document.getElementById('lbMine');
+            list.innerHTML = '<div class="lb-empty">Загрузка...</div>';
+            mine.textContent = '';
+
+            if (!sb) {
+                list.innerHTML = '<div class="lb-empty">Сервис лидербордов не загрузился.</div>';
+                return;
+            }
+
+            let data = [];
+            try {
+                const res = await sb.from('leaderboard')
+                    .select('username,best,user_id')
+                    .eq('game', game)
+                    .order('best', { ascending: false })
+                    .limit(10);
+                if (res.error) {
+                    list.innerHTML = '<div class="lb-empty">' + (res.error.code === 'PGRST205'
+                        ? 'База ещё не настроена. Выполните SQL из supabase-setup.sql.'
+                        : 'Не удалось загрузить лидерборд.') + '</div>';
+                    return;
+                }
+                data = res.data || [];
+            } catch (e) {
+                list.innerHTML = '<div class="lb-empty">Нет связи с сервером.</div>';
+                return;
+            }
+
+            if (!data.length) {
+                list.innerHTML = '<div class="lb-empty">Пока нет результатов — стань первым!</div>';
+            } else {
+                list.innerHTML = '';
+                data.forEach(function(row, index) {
+                    const rowEl = document.createElement('div');
+                    rowEl.className = 'lb-row' + (index < 3 ? ' top' + (index + 1) : '');
+                    const rank = document.createElement('div');
+                    rank.className = 'lb-rank';
+                    rank.textContent = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : String(index + 1);
+                    const name = document.createElement('div');
+                    name.className = 'lb-name';
+                    name.textContent = row.username;
+                    const scoreEl = document.createElement('div');
+                    scoreEl.className = 'lb-score';
+                    scoreEl.textContent = row.best;
+                    rowEl.appendChild(rank);
+                    rowEl.appendChild(name);
+                    rowEl.appendChild(scoreEl);
+                    list.appendChild(rowEl);
+                });
+            }
+
+            if (!currentUser) {
+                mine.innerHTML = '<button class="lb-login-link" type="button" onclick="openAccount()">Войдите</button>, чтобы сохранять результаты.';
+            } else {
+                const own = data.find(function(r) { return r.user_id === currentUser.id; });
+                if (own) {
+                    mine.textContent = 'Ваш рекорд: ' + own.best + ' ' + (LB_UNITS[game] || '');
+                } else {
+                    try {
+                        const my = await sb.from('leaderboard')
+                            .select('best')
+                            .eq('game', game)
+                            .eq('user_id', currentUser.id)
+                            .maybeSingle();
+                        mine.textContent = (!my.error && my.data)
+                            ? ('Ваш рекорд: ' + my.data.best + ' ' + (LB_UNITS[game] || ''))
+                            : 'У вас пока нет результата в этой игре.';
+                    } catch (e) {
+                        mine.textContent = '';
+                    }
+                }
+            }
+        }
+
+        function closeLeaderboard() {
+            document.getElementById('leaderboardModal').classList.remove('active');
+            if (lbPausedSnake) {
+                lbPausedSnake = false;
+                if (gameModal.classList.contains('active') && !isRunning) {
+                    isRunning = true;
+                    gameLoop = setInterval(gameTick, 120);
+                }
+            }
+        }
 
         // --- ПОДДЕРЖКА ---
         const supportModal = document.getElementById('supportModal');
@@ -1448,7 +2147,9 @@
 
         function endGame() {
             stopGame();
-            showGameOverlay('Игра окончена!', 'Ваш счёт: ' + score, 'Играть снова');
+            const hint = currentUser ? '' : ' · Войдите, чтобы сохранить результат';
+            showGameOverlay('Игра окончена!', 'Ваш счёт: ' + score + hint, 'Играть снова');
+            submitScore('snake', score);
         }
 
         function drawBoard() {
@@ -1600,6 +2301,7 @@
             if (checkTTTWin('X')) {
                 tttStatus.innerHTML = '<span>Вы победили! 🎉</span>';
                 tttGameOver = true;
+                submitScore('ttt', 1);
                 return;
             }
             if (isTTTDraw()) {
@@ -1691,6 +2393,7 @@
         let isGameOver2048 = false;
         let hasWon2048 = false;
         let isPaused2048 = false;
+        let lastSaved2048 = -1;
 
         function open2048() {
             g2048Modal.classList.add('active');
@@ -1705,6 +2408,7 @@
             isGameOver2048 = false;
             hasWon2048 = false;
             isPaused2048 = false;
+            lastSaved2048 = -1;
             g2048Overlay.classList.add('hidden');
             continue2048Btn.style.display = 'none';
             updateScore2048();
@@ -1717,6 +2421,13 @@
             isPaused2048 = false;
             g2048Overlay.classList.add('hidden');
             continue2048Btn.style.display = 'none';
+        }
+
+        function save2048Score() {
+            if (score2048 > lastSaved2048) {
+                lastSaved2048 = score2048;
+                submitScore('2048', score2048);
+            }
         }
 
         function addRandomTile() {
@@ -1848,9 +2559,10 @@
                         hasWon2048 = true;
                         isPaused2048 = true;
                         g2048OverlayTitle.textContent = 'Победа! 🎉';
-                        g2048OverlayText.textContent = 'Вы собрали 2048! Счёт: ' + score2048;
+                        g2048OverlayText.textContent = 'Вы собрали 2048! Счёт: ' + score2048 + (currentUser ? '' : ' · Войдите, чтобы сохранить результат');
                         continue2048Btn.style.display = 'inline-flex';
                         g2048Overlay.classList.remove('hidden');
+                        save2048Score();
                         return;
                     }
                 }
@@ -1858,9 +2570,10 @@
             if (!canMove2048()) {
                 isGameOver2048 = true;
                 g2048OverlayTitle.textContent = 'Игра окончена!';
-                g2048OverlayText.textContent = 'Ваш счёт: ' + score2048;
+                g2048OverlayText.textContent = 'Ваш счёт: ' + score2048 + (currentUser ? '' : ' · Войдите, чтобы сохранить результат');
                 continue2048Btn.style.display = 'none';
                 g2048Overlay.classList.remove('hidden');
+                save2048Score();
             }
         }
 
@@ -2065,6 +2778,8 @@
                 if (tttModal.classList.contains('active')) closeTTT();
                 if (g2048Modal.classList.contains('active')) close2048();
                 if (gamesHubModal.classList.contains('active')) closeGamesHub();
+                if (accountModal.classList.contains('active')) closeAccount();
+                if (leaderboardModal.classList.contains('active')) closeLeaderboard();
                 return;
             }
             if (loreModal.classList.contains('active')) {
@@ -2081,6 +2796,8 @@
             if (e.target === tttModal) closeTTT();
             if (e.target === g2048Modal) close2048();
             if (e.target === gamesHubModal) closeGamesHub();
+            if (e.target === accountModal) closeAccount();
+            if (e.target === leaderboardModal) closeLeaderboard();
         });
 
         // --- КАРТОЧКИ ИГР (клавиатура) ---
@@ -2094,6 +2811,8 @@
                 }
             });
         });
+
+        initAuth();
     </script>
 </body>
 </html>
